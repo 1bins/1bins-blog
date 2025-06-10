@@ -1,5 +1,9 @@
 import {ReactNode} from "react";
 import {Header} from "@/components/header";
+import style from './layout.module.scss';
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(style);
 
 export default function BlogLayout({
   children
@@ -7,9 +11,11 @@ export default function BlogLayout({
   children: ReactNode
 }) {
  return(
-   <main>
+   <>
      <Header />
-     {children}
-   </main>
+     <main className={cx('main')}>
+       {children}
+     </main>
+   </>
  )
 }
