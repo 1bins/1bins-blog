@@ -7,7 +7,9 @@ $color_secondary: #ffb700;
 
 // text
 $color_text: #374151;
-$color_text_light: #a2a2a2;
+
+// background
+$color_background: #e9f3f8;
 
 // black scale
 $black: #000;
@@ -21,21 +23,18 @@ $blackF5: #F5F5F5;
 $blackF9: #F9F9F9;
 $white: #FFF;
 
-// display flex
-$displayFlexStart: flex, start, start;
-$displayFlexStartCenter: flex, start, center;
-$displayFlexStartEnd: flex, start, end;
-$displayInlineFlexStart: inline-flex, start, start;
+// mixin
+@mixin clickableBox() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.4rem;
+  aspect-ratio: 1/1;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all .5s;
 
-$displayFlexEnd: flex, end, end;
-$displayFlexEndStart: flex, end, start;
-$displayFlexEndCenter: flex, end, center;
-$displayInlineFlexEnd: inline-flex, end, end;
-
-$displayFlexCenter: flex, center, center;
-$displayFlexCenterStart: flex, center, start;
-$displayFlexCenterEnd: flex, center, end;
-
-$displayFlexBetweenStart: flex, space-between, start;
-$displayFlexBetweenCenter: flex, space-between, center;
-$displayFlexBetweenEnd: flex, space-between, end;
+  &:hover {
+    background: $color_background;
+  }
+}

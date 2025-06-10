@@ -1,0 +1,76 @@
+@use '@/assets/scss/variable' as v;
+
+.header {
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .16);
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &.isMoved {
+      border-bottom: 1px solid #f8f8f8;
+    }
+
+    span {
+      display: block;
+      height: 0.4rem;
+      background: #000;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 120rem;
+  height: 5.8rem;
+  margin: 0 auto;
+
+  &.pageMoved {
+    transform: translateY(-100%);
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 0.8rem;
+  }
+
+  .nav-wrap {
+    li {
+      padding: 0.5rem 1.1rem;
+      border-radius: 2.8rem;
+
+      a {
+        color: #4c5f7a;
+        font-weight: 500;
+        transition: .5s;
+
+        &:hover {
+          color: v.$black;
+        }
+      }
+
+      &.active {
+        background: v.$color_background;
+
+        a {
+          color: v.$black;
+        }
+      }
+    }
+  }
+
+  .add-wrap {
+    button, a {
+      line-height: 1;
+
+      @include v.clickableBox;
+    }
+  }
+}
