@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import {PostData} from '@/types';
 import {supabase} from "@/lib/supabase";
 import Image from "next/image";
 import { MdOutlineCalendarMonth } from "react-icons/md";
@@ -9,7 +8,7 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(style);
 
 async function PostList() {
-  const { data: posts, error } = await supabase.from<'posts', PostData>('posts').select('*').order('created_at', { ascending: false });
+  const { data: posts, error } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
 
   if (error) {
     // 에러 처리

@@ -1,12 +1,11 @@
 import style from './post.module.scss';
 import classnames from 'classnames/bind';
-import {PostData} from '@/types';
 import {supabase} from "@/lib/supabase";
 
 const cx = classnames.bind(style);
 
 export default async function Page() {
-  const { data: posts, error } = await supabase.from<'posts', PostData>('posts').select('*').order('created_at', { ascending: false });
+  const { data: posts, error } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
 
   if (error) {
     // 에러 처리

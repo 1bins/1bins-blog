@@ -1,6 +1,5 @@
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import {supabase} from "@/lib/supabase";
-import {PostData} from "@/types";
 import {notFound} from "next/navigation";
 import style from './post.module.scss';
 import classNames from "classnames/bind";
@@ -8,7 +7,7 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(style);
 
 async function Post({ postId } : { postId: string }) {
-  const { data: posts, error } = await supabase.from<'posts', PostData>('posts').select('*').eq('id', postId);
+  const { data: posts, error } = await supabase.from('posts').select('*').eq('id', Number(postId));
 
   if (error) {
     // 에러 처리
@@ -39,8 +38,8 @@ async function Post({ postId } : { postId: string }) {
 }
 
 export default async function Page({
-  params
-}: {
+                                     params
+                                   }: {
   params: Promise<{ postId: string }>
 }) {
   const { postId } = await params;
