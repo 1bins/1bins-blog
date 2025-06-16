@@ -1,0 +1,6 @@
+@use '@/assets/scss/variable' as v;
+
+.main {
+  min-height: 100vh;
+  background: v.$color_admin_bg;
+}

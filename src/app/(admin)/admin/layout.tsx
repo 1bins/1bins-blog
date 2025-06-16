@@ -1,5 +1,6 @@
 import {ReactNode} from "react";
 import {AdminAuth} from "@/components/auth";
+import style from './layout.module.scss';
 
 export default function AdminLayout({
   children,
@@ -7,8 +8,10 @@ export default function AdminLayout({
   children: ReactNode
 }) {
   return(
-    <AdminAuth>
-      {children}
-    </AdminAuth>
+    <main className={style.main}>
+      <AdminAuth>
+        {children}
+      </AdminAuth>
+    </main>
   )
 }

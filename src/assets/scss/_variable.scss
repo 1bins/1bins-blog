@@ -24,6 +24,11 @@ $blackF5: #F5F5F5;
 $blackF9: #F9F9F9;
 $white: #FFF;
 
+// admin
+$color_admin_bg: #e8ecef;
+$color_admin_line: #e6e9eb;
+$color_admin_th: #8f94a0;
+
 // mixin
 @mixin clickableBox() {
   display: flex;
