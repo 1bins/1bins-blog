@@ -13,6 +13,7 @@ async function PostList() {
 
   if (error) {
     // 에러 처리
+    console.log(error);
     return(
       <div>에러 처리 필요!</div>
     )

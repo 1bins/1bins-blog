@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { HeaderNav } from '@/components/user/header/HeaderNav';
-import { HeaderAdditional } from "@/components/user/header/HeaderAdditional";
+import { HeaderNav } from '@/components/header/HeaderNav';
+import { HeaderAdditional } from "@/components/header/HeaderAdditional";
 import style from './header.module.scss';
 import classnames from 'classnames/bind';
-import {HeaderProgress} from "@/components/user/header/HeaderProgress";
+import {HeaderProgress} from "@/components/header/HeaderProgress";
 
 const cx = classnames.bind(style);
 
