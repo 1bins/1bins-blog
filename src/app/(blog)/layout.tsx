@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {Header} from "@/components/header";
+import {Header} from "@/components/user/header";
 import style from './layout.module.scss';
 import classNames from "classnames/bind";
 
