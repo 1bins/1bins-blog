@@ -15,8 +15,8 @@ export default function AdminPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = async (e?: React.FormEvent) => {
+    e?.preventDefault();
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -24,9 +24,15 @@ export default function AdminPage() {
     });
 
     if (error) {
-      alert('로그인 실패: 이메일 또는 비밀번호를 확인하세요.')
+      alert('⚠ 이메일 또는 비밀번호를 확인하세요')
     } else {
-      router.push('/');
+      router.push('/admin');
+    }
+  }
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleLogin();
     }
   }
 
@@ -53,6 +59,7 @@ export default function AdminPage() {
               placeholder="패스워드를 입력하세요"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={onKeyDown}
               required
             />
           </div>
