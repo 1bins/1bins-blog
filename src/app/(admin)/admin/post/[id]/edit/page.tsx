@@ -4,8 +4,8 @@ import Editor from "@/app/(admin)/admin/post/write/components/Editor";
 
 const cx = classnames.bind(style);
 
-export default function AdminEditPage({ params } : { params: { id: string } }) {
-  const { id } = params;
+export default async function AdminEditPage({ params } : { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
   return(
     <div className={cx('container')}>
