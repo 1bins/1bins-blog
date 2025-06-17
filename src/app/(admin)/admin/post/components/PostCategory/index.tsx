@@ -1,16 +1,35 @@
+'use client';
+
 import style from './PostCategory.module.scss';
 import classnames from 'classnames/bind';
+import {Categories} from "@/configs/configs";
 
 const cx = classnames.bind(style);
 
-export const PostCategory = () => {
+interface Props {
+  selectedCategory: string | null;
+  onSelectedCategory: (category: string | null) => void;
+}
+
+export const PostCategory = ({ selectedCategory, onSelectedCategory }: Props) => {
+
   return(
     <div className={cx('category-wrap')}>
       <p className={cx('title')}>Category</p>
       <ul>
-        <li className={cx('active')}>카테고리 1</li>
-        <li>카테고리 2</li>
-        <li>카테고리 3</li>
+          <li
+            className={cx({ active: selectedCategory === null })}
+            onClick={() => onSelectedCategory(null)}
+          >
+            전체보기
+          </li>
+        {Categories.map((category, idx) => (
+          <li
+            key={`category-${idx}`}
+            className={cx({'active': selectedCategory === category})}
+            onClick={() => onSelectedCategory(category)}
+          >{category}</li>
+        ))}
       </ul>
     </div>
   )
