@@ -1,8 +1,8 @@
 export interface PostData {
-  id: number;
-  title: string;
-  content: string;
-  category: string;
-  thumbnail?: string;
+  category: string | null;
+  content: string | null;
   created_at: string;
+  id: number;
+  thumbnailUrl: string | null;
+  title: string | null;
 }
