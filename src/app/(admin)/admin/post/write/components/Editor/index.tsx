@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import {Button} from "@/components/Button";
 import {CategoryBox} from "@/app/(admin)/admin/post/write/components/CategoryBox";
@@ -9,10 +9,15 @@ import {supabase} from "@/lib/supabase";
 import {useRouter} from "next/navigation";
 import style from './editor.module.scss';
 import classnames from 'classnames/bind';
+import {PostData} from "@/types";
 
 const cx = classnames.bind(style);
 
-export default function Editor() {
+interface Props {
+  postId?: string;
+}
+
+export default function Editor({ postId }: Props) {
   // ** state
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -21,22 +26,61 @@ export default function Editor() {
   // ** variables
   const router = useRouter();
   const handleSubmit = async () => {
-    const { error } = await supabase.from('posts').insert([
-      {
-        title,
-        content,
-        category,
-      }
-    ]);
+    if (postId) {
+      const { error } = await supabase
+        .from('posts')
+        .update({ title, content, category })
+        .eq('id', Number(postId));
 
-    if (error) {
-      console.error(error);
-      alert('⚠ 글 저장 실패');
+      if (error) {
+        console.error(error);
+        alert('⚠ 글 저장 실패');
+      } else {
+        alert('글이 성공적으로 수정되었습니다 😊')
+        router.replace('/admin/post');
+      }
     } else {
-      alert('글이 성공적으로 저장되었습니다 😊')
-      router.push('/admin/post');
+      const { error } = await supabase
+        .from('posts')
+        .insert([
+          {
+            title,
+            content,
+            category,
+          }
+        ]);
+
+      if (error) {
+        console.error(error);
+        alert('⚠ 글 저장 실패');
+      } else {
+        alert('글이 성공적으로 저장되었습니다 😊')
+        router.replace('/admin/post');
+      }
     }
   };
+
+  useEffect(() => {
+    if (!postId) return;
+
+    (async() => {
+      const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .eq('id', Number(postId));
+
+      if (error || !data || data.length === 0) {
+        alert('존재하지 않는 페이지입니다');
+        router.back();
+        return null;
+      } else {
+        const post: PostData = data[0];
+        setTitle(post.title ?? '');
+        setContent(post.content ?? '');
+        setCategory(post.category ?? '');
+      }
+    })();
+  }, [postId, router])
 
   return (
     <div className={cx('container')}>
