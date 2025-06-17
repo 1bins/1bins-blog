@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {AdminAuth} from "@/components/auth";
+import {AdminAuth} from "@/components/Auth";
 import style from './layout.module.scss';
 
 export default function AdminLayout({
