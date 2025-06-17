@@ -3,6 +3,7 @@
 import style from './PostTable.module.scss';
 import classnames from 'classnames/bind';
 import {PostData} from "@/types";
+import {useRouter} from "next/navigation";
 
 const cx = classnames.bind(style);
 
@@ -11,8 +12,11 @@ interface PostTableProps {
 }
 
 export const PostTable = ({
-                            posts
-                          }: PostTableProps) => {
+  posts
+}: PostTableProps) => {
+  // ** variables
+  const router = useRouter();
+
   return(
     <div className={cx('post-wrap')}>
       <table>
@@ -32,6 +36,7 @@ export const PostTable = ({
         {posts.map(post => (
           <tr
             key={post.id}
+            onClick={() => router.push(`/admin/post/${post.id}/edit`)}
           >
             <td>{post.id}</td>
             <td>{post.title}</td>
