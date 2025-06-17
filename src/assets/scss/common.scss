@@ -129,6 +129,15 @@ img.--full {
   display: none;
 }
 
+// wmde-markdown
+.wmde-markdown {
+  font-family: var(--font-pretendard), sans-serif !important;
+
+  ul {
+    list-style: initial;
+  }
+}
+
 // mobile
 @media screen and (max-width: $table) {
   .pc {

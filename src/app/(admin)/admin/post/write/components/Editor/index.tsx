@@ -3,18 +3,20 @@
 import React, {useState} from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import {Button} from "@/components/Button";
+import {CategoryBox} from "@/app/(admin)/admin/post/write/components/CategoryBox";
 import { FaPencil } from "react-icons/fa6";
 import {supabase} from "@/lib/supabase";
 import {useRouter} from "next/navigation";
-import style from './writeEditor.module.scss';
+import style from './editor.module.scss';
 import classnames from 'classnames/bind';
 
 const cx = classnames.bind(style);
 
-export default function WriteEditor() {
+export default function Editor() {
   // ** state
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
+  const [category, setCategory] = useState('');
 
   // ** variables
   const router = useRouter();
@@ -23,6 +25,7 @@ export default function WriteEditor() {
       {
         title,
         content,
+        category,
       }
     ]);
 
@@ -37,6 +40,10 @@ export default function WriteEditor() {
 
   return (
     <div className={cx('container')}>
+      <CategoryBox
+        category={category}
+        setCategory={setCategory}
+      />
       <div className={cx('title-box')}>
         <input
           type="text"
