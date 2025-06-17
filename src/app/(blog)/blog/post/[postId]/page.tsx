@@ -3,6 +3,7 @@ import {supabase} from "@/lib/supabase";
 import {notFound} from "next/navigation";
 import style from './post.module.scss';
 import classNames from "classnames/bind";
+import MarkdownPreviewClient from "@/app/(blog)/blog/post/[postId]/MarkdownPreviewClient";
 
 const cx = classNames.bind(style);
 
@@ -31,15 +32,15 @@ async function Post({ postId } : { postId: string }) {
         </p>
       </div>
       <div className="post-body">
-        {posts[0].content}
+        <MarkdownPreviewClient source={posts[0].content}/>
       </div>
     </>
   )
 }
 
 export default async function Page({
-                                     params
-                                   }: {
+  params
+}: {
   params: Promise<{ postId: string }>
 }) {
   const { postId } = await params;
