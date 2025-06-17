@@ -1,4 +1,9 @@
 @use '@/assets/scss/variable' as v;
+@mixin whiteBackground {
+  background: v.$white;
+  border-radius: 0.8rem;
+  padding: 2rem 2.4rem;
+}
 
 .container {
   padding-top: 8.6rem;
@@ -9,45 +14,62 @@
     display: flex;
     justify-content: space-between;
 
-    & > div {
-      background: v.$white;
-      border-radius: 2rem;
-      padding: 2rem 2.4rem;
-    }
-
-    .category-wrap {
+    .left-side {
       width: 24rem;
 
-      .title {
-        font-weight: 700;
-        padding-bottom: 1rem;
-        margin-bottom: 1rem;
-        border-bottom: 0.1rem solid #ccc;
-      }
+      .category-wrap {
+        @include whiteBackground;
 
-      li {
-        padding: 0.8rem 0;
-        cursor: pointer;
-
-        &.active {
+        .title {
           font-weight: 700;
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+          border-bottom: 0.1rem solid #ccc;
+        }
+
+        li {
+          padding: 0.8rem 0;
+          cursor: pointer;
+
+          &.active {
+            font-weight: 700;
+          }
         }
       }
     }
 
-    .post-wrap {
+    .right-side {
       width: calc(100% - 28.5rem);
 
-      th {
-        height: 4.2rem;
-        color: v.$color_admin_th;
-        font-weight: 400;
-        border-bottom: 0.1rem solid v.$color_admin_line;
+      .post-wrap {
+        @include whiteBackground;
+
+        tbody tr:hover {
+          box-shadow: 0 0 0.5rem rgba(0, 0, 0, .13);
+        }
+
+        th {
+          height: 4.2rem;
+          color: v.$color_admin_th;
+          font-weight: 400;
+          border-bottom: 0.1rem solid v.$color_admin_line;
+        }
+
+        td {
+          padding: 0.6rem 1.1rem;
+          height: 4.2rem;
+          cursor: pointer;
+
+          &:not(:nth-child(2)){
+            text-align: center;
+          }
+        }
       }
 
-      td {
-        padding: 0.6rem 1.1rem;
-        height: 4.2rem;
+      .button-box {
+        display: flex;
+        margin-top: 1.5rem;
+        justify-content: flex-end;
       }
     }
   }
