@@ -1,6 +1,6 @@
 import style from './edit.module.scss';
 import classnames from 'classnames/bind';
-import Editor from "@/app/(admin)/admin/post/write/components/Editor";
+import {EditorForm} from "@/app/(admin)/admin/post/components/Editor/EditorForm";
 
 const cx = classnames.bind(style);
 
@@ -9,7 +9,7 @@ export default async function AdminEditPage({ params } : { params: Promise<{ id:
 
   return(
     <div className={cx('container')}>
-      <Editor postId={id}/>
+      <EditorForm postId={id}/>
     </div>
   )
 }

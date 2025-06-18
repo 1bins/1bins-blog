@@ -1,0 +1,10 @@
+@use '@/assets/scss/variable' as v;
+
+.container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.8rem 0;
+}

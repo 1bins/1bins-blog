@@ -1,14 +1,14 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
-import MDEditor from '@uiw/react-md-editor';
-import {Button} from "@/components/Button";
-import {CategoryBox} from "@/app/(admin)/admin/post/write/components/CategoryBox";
-import { FaPencil } from "react-icons/fa6";
-import {supabase} from "@/lib/supabase";
-import {useRouter} from "next/navigation";
-import style from './editor.module.scss';
+import style from './editorForm.module.scss';
 import classnames from 'classnames/bind';
+import {useState, useEffect} from "react";
+import {useRouter} from "next/navigation";
+import {CategorySelector} from "@/app/(admin)/admin/post/components/Editor/CategorySelector";
+import {TitleInput} from "@/app/(admin)/admin/post/components/Editor/TitleInput";
+import {EditorContent} from "@/app/(admin)/admin/post/components/Editor/EditorContent";
+import {EditorActions} from "@/app/(admin)/admin/post/components/Editor/EditorActions";
+import {supabase} from "@/lib/supabase";
 import {PostData} from "@/types";
 
 const cx = classnames.bind(style);
@@ -17,7 +17,7 @@ interface Props {
   postId?: string;
 }
 
-export default function Editor({ postId }: Props) {
+export const EditorForm = ({ postId }: Props) => {
   // ** state
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -25,7 +25,7 @@ export default function Editor({ postId }: Props) {
 
   // ** variables
   const router = useRouter();
-  const handleSubmit = async () => {
+  const handlePostSave = async () => {
     if (postId) {
       const { error } = await supabase
         .from('posts')
@@ -60,6 +60,22 @@ export default function Editor({ postId }: Props) {
     }
   };
 
+  const handlePostDelete = async () => {
+    if (!postId) return;
+    const { error } = await supabase
+      .from('posts')
+      .delete()
+      .eq('id', Number(postId));
+
+      if (error) {
+        console.error(error);
+        alert('⚠ 글 삭제 실패');
+      } else {
+        alert('글이 삭제되었습니다 😊')
+        router.replace('/admin/post');
+      }
+  }
+
   useEffect(() => {
     if (!postId) return;
 
@@ -82,35 +98,25 @@ export default function Editor({ postId }: Props) {
     })();
   }, [postId, router])
 
-  return (
+  return(
     <div className={cx('container')}>
-      <CategoryBox
+      <CategorySelector
         category={category}
-        setCategory={setCategory}
+        onCategoryChange={setCategory}
       />
-      <div className={cx('title-box')}>
-        <input
-          type="text"
-          placeholder="제목을 입력하세요"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div className={cx('editor-box')}>
-        <MDEditor
-          value={content}
-          onChange={(val) => setContent(val || '')}
-          style={{minHeight: '100%'}}
-        />
-      </div>
-      <div className={cx('button-box')}>
-        <Button
-          className={"circle"}
-          onClick={handleSubmit}
-        >
-          <FaPencil size={18} color={"#fff"} />
-        </Button>
-      </div>
+      <TitleInput
+        title={title}
+        onTitleChange={setTitle}
+      />
+      <EditorContent
+        content={content}
+        onContentChange={setContent}
+      />
+      <EditorActions
+        postId={postId}
+        onPostSave={handlePostSave}
+        onPostDelete={handlePostDelete}
+      />
     </div>
-  );
+  )
 }

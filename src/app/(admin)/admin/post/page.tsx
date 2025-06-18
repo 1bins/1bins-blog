@@ -2,9 +2,9 @@
 
 import {useEffect, useState} from "react";
 import {supabase} from "@/lib/supabase";
-import {PostCategory} from "@/app/(admin)/admin/post/components/PostCategory";
-import {PostTable} from "@/app/(admin)/admin/post/components/PostTable";
-import {PostButton} from "@/app/(admin)/admin/post/components/PostButton";
+import {PostCategory} from "@/app/(admin)/admin/post/components/Dashboard/Post/PostCategory"
+import {PostTable} from "@/app/(admin)/admin/post/components/Dashboard/Post/PostTable";
+import {PostButton} from "@/app/(admin)/admin/post/components/Dashboard/Post/PostButton";
 import {PostData} from "@/types";
 import style from './post.module.scss';
 import classnames from 'classnames/bind';
