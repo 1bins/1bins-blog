@@ -1,0 +1,28 @@
+@use '@/assets/scss/variable' as v;
+
+.nav-wrap {
+  ul {
+    li {
+      a {
+        display: flex;
+        padding: 1.5rem 1.7rem;
+        color: #646466;
+        align-items: center;
+        gap: 0 0.6rem;
+        border-top-right-radius: 1.2rem;
+        border-bottom-right-radius: 1.2rem;
+
+        &:hover {
+          background: #eee;
+        }
+      }
+
+      &.active {
+        a {
+          color: v.$white;
+          background: v.$color_admin_primary;
+        }
+      }
+    }
+  }
+}

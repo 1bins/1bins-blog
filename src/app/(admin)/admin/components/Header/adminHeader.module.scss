@@ -1,0 +1,7 @@
+@use '@/assets/scss/variable' as v;
+
+.header {
+  height: 100vh;
+  background: v.$white;
+  box-shadow: 0 0 1.6rem rgba(0, 0, 0, 0.15);
+}
