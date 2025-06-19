@@ -1,0 +1,22 @@
+@use '@/assets/scss/variable' as v;
+
+.title-box {
+  margin-bottom: 2.7rem;
+
+  h3 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: 0.2rem;
+      right: -1rem;
+      width: 0.6rem;
+      height: 0.6rem;
+      background: v.$color_admin_primary;
+    }
+  }
+}
