@@ -22,7 +22,7 @@ export const PostList = ({ posts }: { posts: PostData[] }) => {
                   <Image
                     width={433}
                     height={232}
-                    src={post.thumbnailUrl || '/err_no_thumb.jpg'}
+                    src={post.thumbnailUrl || '/err_no_thumb.jpg?ver=2'}
                     alt={`${post.title} 썸네일 이미지`}
                   />
                 </div>
