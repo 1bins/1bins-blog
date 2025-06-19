@@ -21,14 +21,16 @@ export const PostTable = ({
     <div className={cx('post-wrap')}>
       <table>
         <colgroup>
-          <col width="10%"/>
+          <col width="5%"/>
           <col width="70%"/>
+          <col width="10%"/>
           <col width="20%"/>
         </colgroup>
         <thead>
         <tr>
           <th scope="row">No.</th>
           <th scope="row">title</th>
+          <th scope="row">Category</th>
           <th scope="row">date</th>
         </tr>
         </thead>
@@ -40,6 +42,7 @@ export const PostTable = ({
           >
             <td>{post.id}</td>
             <td>{post.title}</td>
+            <td>{post.category}</td>
             <td>{new Date(`${post.created_at}`).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}</td>
           </tr>
         ))}
