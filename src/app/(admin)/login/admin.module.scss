@@ -58,12 +58,12 @@
     button {
       width: 28.6rem;
       color: #fff;
-      background: v.$color_primary;
+      background: v.$color_admin_primary;
       border-radius: 0.4rem;
       transition: background 0.45s;
 
       &:hover {
-        background: v.$color_primary_deep;
+        background: v.$color_admin_primary_deep;
       }
     }
   }

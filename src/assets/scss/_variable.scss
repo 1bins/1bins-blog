@@ -26,9 +26,14 @@ $blackF9: #F9F9F9;
 $white: #FFF;
 
 // admin
-$color_admin_bg: #e8ecef;
+$color_admin_bg: #f7f7f9;
 $color_admin_line: #e6e9eb;
 $color_admin_th: #8f94a0;
+$color_admin_primary: #2ecb72;
+$color_admin_primary_light: #d2f6dc;
+$color_admin_primary_deep: #20ad5b;
+$color_admin_secondary: #7d91e7;
+$color_admin_secondary_light: #d6dcfc;
 
 // mixin
 @mixin clickableBox() {
