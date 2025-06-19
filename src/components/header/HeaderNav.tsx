@@ -16,7 +16,7 @@ export const HeaderNav = () => {
         <h2 className={cx('blind')}>메뉴</h2>
         <ul>
           <li className={cx({ active: pathname.includes("/blog") })}>
-            <Link href="/blog">1BEANS</Link>
+            <Link href="/blog">1BINS</Link>
           </li>
           <li className={cx({ active: pathname === "/about" })}>
             <Link href="/about">About</Link>
