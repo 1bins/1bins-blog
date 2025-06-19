@@ -15,7 +15,7 @@
       cursor: pointer;
 
       &.isDropdown {
-        border: 0.1rem solid v.$color_primary;
+        border: 0.1rem solid v.$color_admin_primary;
       }
     }
   }
@@ -53,7 +53,7 @@
           }
 
           &:hover {
-            background: #adeae1;
+            background: v.$color_admin_primary_light;
           }
         }
       }

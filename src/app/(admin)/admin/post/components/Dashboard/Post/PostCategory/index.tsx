@@ -15,14 +15,13 @@ export const PostCategory = ({ selectedCategory, onSelectedCategory }: Props) =>
 
   return(
     <div className={cx('category-wrap')}>
-      <p className={cx('title')}>Category</p>
       <ul>
-          <li
-            className={cx({ active: selectedCategory === null })}
-            onClick={() => onSelectedCategory(null)}
-          >
-            전체보기
-          </li>
+        <li
+          className={cx({ active: selectedCategory === null })}
+          onClick={() => onSelectedCategory(null)}
+        >
+          전체보기
+        </li>
         {Categories.map((category, idx) => (
           <li
             key={`category-${idx}`}

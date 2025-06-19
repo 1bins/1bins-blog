@@ -1,6 +1,21 @@
 @use '@/assets/scss/variable' as v;
+$headerWidth: 25rem;
 
-.main {
+.container {
+  display: flex;
   min-height: 100vh;
   background: v.$color_admin_bg;
+  justify-content: space-between;
+
+  .header {
+    width: $headerWidth;
+  }
+
+  .main {
+    padding: 4.8rem 4.5rem 0 0;
+    width: calc(100% - $headerWidth - 4.5rem);
+    min-width: 96rem;
+    height: 100vh;
+    overflow-y: auto;
+  }
 }

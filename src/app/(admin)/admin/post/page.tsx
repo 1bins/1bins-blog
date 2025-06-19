@@ -2,6 +2,7 @@
 
 import {useEffect, useState} from "react";
 import {supabase} from "@/lib/supabase";
+import {AdminTitleIndex} from "@/components/AdminTitle";
 import {PostCategory} from "@/app/(admin)/admin/post/components/Dashboard/Post/PostCategory"
 import {PostTable} from "@/app/(admin)/admin/post/components/Dashboard/Post/PostTable";
 import {PostButton} from "@/app/(admin)/admin/post/components/Dashboard/Post/PostButton";
@@ -39,17 +40,19 @@ export default function Page() {
   }, [selectedCategory, posts]);
 
   return(
-    <div className={cx('container', 'list-container')}>
-      <div className={cx('left-side')}>
+    <section className={cx('container', 'list-container')}>
+      <AdminTitleIndex
+        title={"Board"}
+        description={"블로그 게시글 관리"}
+      />
+      <div className={cx('table-box')}>
         <PostCategory
           selectedCategory={selectedCategory}
           onSelectedCategory={setSelectedCategory}
         />
-      </div>
-      <div className={cx('right-side')}>
         <PostTable posts={filterdPosts} />
-        <PostButton />
       </div>
-    </div>
+      <PostButton />
+    </section>
   )
 }

@@ -1,12 +1,6 @@
 @use '@/assets/scss/variable' as v;
-@mixin whiteBackground {
-  background: v.$white;
-  border-radius: 0.8rem;
-  padding: 2rem 2.4rem;
-}
 
 .post-wrap {
-  @include whiteBackground;
 
   tbody tr:hover {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, .13);

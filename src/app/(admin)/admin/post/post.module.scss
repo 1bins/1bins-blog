@@ -1,76 +1,7 @@
 @use '@/assets/scss/variable' as v;
-@mixin whiteBackground {
+
+.table-box {
   background: v.$white;
   border-radius: 0.8rem;
   padding: 2rem 2.4rem;
-}
-
-.container {
-  padding-top: 8.6rem;
-  width: 120rem;
-  margin: 0 auto;
-
-  &.list-container {
-    display: flex;
-    justify-content: space-between;
-
-    .left-side {
-      width: 24rem;
-
-      .category-wrap {
-        @include whiteBackground;
-
-        .title {
-          font-weight: 700;
-          padding-bottom: 1rem;
-          margin-bottom: 1rem;
-          border-bottom: 0.1rem solid #ccc;
-        }
-
-        li {
-          padding: 0.8rem 0;
-          cursor: pointer;
-
-          &.active {
-            font-weight: 700;
-          }
-        }
-      }
-    }
-
-    .right-side {
-      width: calc(100% - 28.5rem);
-
-      .post-wrap {
-        @include whiteBackground;
-
-        tbody tr:hover {
-          box-shadow: 0 0 0.5rem rgba(0, 0, 0, .13);
-        }
-
-        th {
-          height: 4.2rem;
-          color: v.$color_admin_th;
-          font-weight: 400;
-          border-bottom: 0.1rem solid v.$color_admin_line;
-        }
-
-        td {
-          padding: 0.6rem 1.1rem;
-          height: 4.2rem;
-          cursor: pointer;
-
-          &:not(:nth-child(2)){
-            text-align: center;
-          }
-        }
-      }
-
-      .button-box {
-        display: flex;
-        margin-top: 1.5rem;
-        justify-content: flex-end;
-      }
-    }
-  }
 }

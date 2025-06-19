@@ -1,6 +1,10 @@
-import {ReactNode} from "react";
-import {AdminAuth} from "@/components/Auth";
 import style from './layout.module.scss';
+import classnames from 'classnames/bind';
+import {ReactNode} from "react";
+import {AdminAuth} from "@/app/(admin)/admin/components/Auth";
+import {AdminHeader} from "@/app/(admin)/admin/components/Header";
+
+const cx = classnames.bind(style);
 
 export default function AdminLayout({
   children,
@@ -8,10 +12,15 @@ export default function AdminLayout({
   children: ReactNode
 }) {
   return(
-    <main className={style.main}>
-      <AdminAuth>
-        {children}
-      </AdminAuth>
-    </main>
+    <AdminAuth>
+      <div className={cx('container')}>
+        <div className={cx('header')}>
+          <AdminHeader />
+        </div>
+        <main className={cx('main')}>
+          {children}
+        </main>
+      </div>
+    </AdminAuth>
   )
 }
