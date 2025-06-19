@@ -1,9 +1,4 @@
+@use '@/assets/scss/variable' as v;
+
 .container {
-  .post-list {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem 2%;
-    }
-  }
 }

@@ -1,30 +1,48 @@
+'use client';
+
 import {supabase} from "@/lib/supabase";
 import style from './blog.module.scss';
 import classnames from 'classnames/bind';
-import {PostItem} from "@/app/(blog)/blog/components/PostItem";
+import {PostList} from "@/app/(blog)/blog/components/PostList";
+import {PostCategory} from "@/app/(blog)/blog/components/PostCategory";
+import {useEffect, useState} from "react";
+import {PostData} from "@/types";
 
 const cx = classnames.bind(style);
 
-export default async function Home() {
-  const { data: posts, error } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
+export default function Home() {
+  const [posts, setPosts] = useState<PostData[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [filteredPosts, setFilteredPosts] = useState<PostData[]>([]);
 
-  if (error) {
-    // 에러 처리
-    console.log(error);
-    return(
-      <div>에러 처리 필요!</div>
-    )
-  }
+  useEffect(() => {
+    (async () => {
+      const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (!error) {
+        setPosts(data);
+      }
+    })();
+  }, [])
+
+  useEffect(() => {
+    if (selectedCategory) {
+      setFilteredPosts(posts.filter((post) => post.category === selectedCategory))
+    } else {
+      setFilteredPosts(posts);
+    }
+  }, [selectedCategory, posts]);
 
   return (
     <div className={cx('container')}>
-      <div className={cx('post-list')}>
-        <ul>
-          {posts.map(post => (
-            <PostItem key={post.id} post={post} />
-          ))}
-        </ul>
-      </div>
+      <PostCategory
+        selectedCategory={selectedCategory}
+        onSelectedCategoryChange={setSelectedCategory}
+      />
+      <PostList posts={filteredPosts} />
     </div>
   );
 }
