@@ -138,6 +138,13 @@ img.--full {
   }
 }
 
+// dark mode
+body[data-color-mode="dark"] {
+  color: #fff;
+  background: v.$color_dark_background;
+  transition: all .3s;
+}
+
 // mobile
 @media screen and (max-width: $table) {
   .pc {

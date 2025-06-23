@@ -38,3 +38,11 @@
     }
   }
 }
+
+body[data-color-mode="dark"] {
+  .container {
+    h3 {
+      color: v.$white;
+    }
+  }
+}

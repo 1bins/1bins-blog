@@ -9,6 +9,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 999;
 
     &.isMoved {
       border-bottom: 1px solid #f8f8f8;
@@ -17,7 +18,7 @@
     span {
       display: block;
       height: 0.4rem;
-      background: #000;
+      background: v.$black;
     }
   }
 }
@@ -71,6 +72,51 @@
       line-height: 1;
 
       @include v.clickableBox;
+    }
+  }
+}
+
+// dark mode
+body[data-color-mode="dark"] {
+  .header {
+    box-shadow: 0 0 5px rgba(255, 255, 255, .16);
+    background: v.$color_dark_background;
+    transition: background .3s;
+
+    .progress-bar {
+      span {
+        background: v.$white;
+      }
+    }
+  }
+
+  .container {
+    .nav-wrap {
+      li {
+        a {
+          color: v.$white;
+
+          &:hover {
+            color: v.$blackF5;
+          }
+        }
+
+        &.active {
+          background: v.$color_background;
+
+          a {
+            color: v.$black;
+          }
+        }
+      }
+    }
+
+    .add-wrap {
+      button, a {
+        &:hover {
+          background: #333;
+        }
+      }
     }
   }
 }

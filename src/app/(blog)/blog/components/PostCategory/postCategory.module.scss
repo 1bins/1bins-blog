@@ -24,3 +24,19 @@
     }
   }
 }
+
+// dark mode
+body[data-color-mode="dark"] {
+  .post-category-box {
+    ul {
+      li {
+        border: 1px solid #333;
+
+        &.active {
+          color: v.$color_dark_background;
+          background: v.$white;
+        }
+      }
+    }
+  }
+}
