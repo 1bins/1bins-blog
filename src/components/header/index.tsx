@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { HeaderNav } from '@/components/Header/HeaderNav';
 import { HeaderAdditional } from "@/components/Header/HeaderAdditional";
 import style from './header.module.scss';
@@ -10,25 +11,31 @@ import {HeaderProgress} from "@/components/Header/HeaderProgress";
 const cx = classnames.bind(style);
 
 export const Header = () => {
+  // ** state
+  const pathname = usePathname();
   const [isPageMoved, setIsPageMoved] = useState<boolean>(false);
   const [scrollPercent, setScrollPercent] = useState<number>(0);
 
+  // ** variables
+  const updateScrollProgress = () => {
+    const scrollY = window.scrollY;
+    const innerHeight = window.innerHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollableHeight = scrollHeight - innerHeight;
+
+    const progress = scrollableHeight > 0 ? (scrollY / scrollableHeight) * 100 : 0;
+    setIsPageMoved(scrollY > 30);
+    setScrollPercent(progress);
+  }
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const innerHeight = window.innerHeight;
-      const scrollHeight = document.documentElement.scrollHeight;
+    updateScrollProgress();
+  }, [pathname]);
 
-      const totalScroll = scrollHeight - innerHeight;
-      const progress = (scrollY / (scrollHeight - innerHeight)) * 100;
-
-      setIsPageMoved(scrollY > 30);
-      setScrollPercent(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", updateScrollProgress);
+    return () => window.removeEventListener("scroll", updateScrollProgress);
+  }, [])
 
 
   return(
