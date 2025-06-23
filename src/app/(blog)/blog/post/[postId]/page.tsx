@@ -2,10 +2,11 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import {supabase} from "@/lib/supabase";
 import {notFound} from "next/navigation";
 import style from './post.module.scss';
-import classNames from "classnames/bind";
+import classnames from "classnames/bind";
 import MarkdownPreviewClient from "@/app/(blog)/blog/post/[postId]/MarkdownPreviewClient";
+import {BackButton} from "@/app/(blog)/blog/post/[postId]/components/BackButton";
 
-const cx = classNames.bind(style);
+const cx = classnames.bind(style);
 
 async function Post({ postId } : { postId: string }) {
   const { data: posts, error } = await supabase.from('posts').select('*').eq('id', Number(postId));
@@ -31,8 +32,11 @@ async function Post({ postId } : { postId: string }) {
           <span>{new Date(`${posts[0].created_at}`).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}</span>
         </p>
       </div>
-      <div className="post-body">
+      <div className={cx('post-body')}>
         <MarkdownPreviewClient source={posts[0].content}/>
+        <aside>
+          <BackButton/>
+        </aside>
       </div>
     </>
   )
