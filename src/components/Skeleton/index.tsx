@@ -33,7 +33,9 @@ export const SkeletonPost = () => {
       <div className={cx('title')}></div>
       <div className={cx('category')}></div>
       <div className={cx('date')}></div>
-      <div className={cx('content')}></div>
+      <div className={cx('content-box')}>
+        <div className={cx('content')}></div>
+      </div>
     </div>
   )
 }

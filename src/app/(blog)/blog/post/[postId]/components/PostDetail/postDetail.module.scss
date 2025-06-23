@@ -44,3 +44,10 @@
     min-height: 55vh;
   }
 }
+
+// dark mode
+body[data-color-mode="dark"] {
+  .post-header {
+    border-bottom-color: #333;
+  }
+}
