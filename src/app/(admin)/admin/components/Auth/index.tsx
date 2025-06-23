@@ -2,40 +2,44 @@
 
 import {ReactNode, useEffect, useState} from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from "@/lib/supabase";
+import {supabase} from "@/lib/supabase";
 
 export const AdminAuth = ({
   children
 } : {
   children: ReactNode
 }) => {
+  // ** state
   const [isLoading, setIsLoading] = useState(true);
-  const [isAuthed, setIsAuthed] = useState(false);
-  const router = useRouter();
+  const [authed, setAuthed] = useState(false);
 
+  // ** variables
+  const router = useRouter();
   useEffect(() => {
-    const fetchUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        alert('⚠ 로그인이 필요합니다');
-        router.push('/login');
+    const {data: {subscription}} = supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
+        setAuthed(true);
+        setIsLoading(false);
       } else {
-        setIsAuthed(true);
+        alert('로그인이 필요합니다')
+        router.push('/login');
+      }
+    });
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setAuthed(true);
+      } else {
+        alert('로그인이 필요합니다')
+        router.push('/login');
       }
       setIsLoading(false);
-    }
-    fetchUser();
-  }, []);
+    })
 
-  if (isLoading) {
-    return(
-      <p>인증 확인 중...</p>
-    )
-  }
-
-  if (!isAuthed) {
-    return null;
-  }
+    return () => {
+      subscription.unsubscribe();
+    };
+  },[]);
 
   return(
     <>
