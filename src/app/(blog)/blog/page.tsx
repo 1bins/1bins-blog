@@ -7,11 +7,13 @@ import {PostList} from "@/app/(blog)/blog/components/PostList";
 import {PostCategory} from "@/app/(blog)/blog/components/PostCategory";
 import {useEffect, useState} from "react";
 import {PostData} from "@/types";
+import {SkeletonList} from "@/components/Skeleton";
 
 const cx = classnames.bind(style);
 
 export default function Home() {
   const [posts, setPosts] = useState<PostData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [filteredPosts, setFilteredPosts] = useState<PostData[]>([]);
 
@@ -24,6 +26,7 @@ export default function Home() {
 
       if (!error) {
         setPosts(data);
+        setIsLoading(false);
       }
     })();
   }, [])
@@ -42,7 +45,12 @@ export default function Home() {
         selectedCategory={selectedCategory}
         onSelectedCategoryChange={setSelectedCategory}
       />
-      <PostList posts={filteredPosts} />
+      {
+        isLoading ?
+          <SkeletonList count={6}/>
+          :
+          <PostList posts={filteredPosts} />
+      }
     </div>
   );
 }

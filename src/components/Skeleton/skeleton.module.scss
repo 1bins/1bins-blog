@@ -1,0 +1,90 @@
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-list {
+  display: flex;
+  gap: 2rem 2%;
+  flex-wrap: wrap;
+
+  .skeleton {
+    width: 32%;
+  }
+}
+
+.skeleton {
+  div:not(.content-box) {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite ease-in-out;
+    border-radius: 0.3rem;
+  }
+
+  &.list {
+    .thumbnail {
+      height: 23.1rem;
+    }
+
+    .content-box {
+      padding: 1.8rem 1.2rem;
+
+      .category {
+        width: 30%;
+        height: 1.5rem;
+      }
+
+      .title {
+        height: 2.1rem;
+        margin: 0.8rem 0 1.6rem;
+      }
+
+      .date {
+        width: 45%;
+        height: 1.4rem;
+      }
+    }
+  }
+
+  &.post {
+    div {
+      margin: 0 auto;
+    }
+
+    .title {
+      height: 3.9rem;
+    }
+
+    .category {
+      width: 30%;
+      height: 1.8rem;
+      margin: 1.6rem auto 1.4rem;
+    }
+
+    .date {
+      width: 40%;
+      height: 1.9rem;
+    }
+
+    .content {
+      margin-top: 3.6rem;
+      height: 30rem;
+    }
+  }
+}
+
+// dark mode
+
+
+body[data-color-mode="dark"] {
+  .skeleton {
+    div:not(.content-box) {
+      background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+      background-size: 200% 100%;
+    }
+  }
+}
