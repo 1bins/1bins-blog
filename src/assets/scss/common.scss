@@ -142,7 +142,7 @@ img.--full {
 body[data-color-mode="dark"] {
   color: #fff;
   background: v.$color_dark_background;
-  transition: all .3s;
+  transition: color .3s;
 }
 
 // mobile
