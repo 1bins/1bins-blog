@@ -84,6 +84,10 @@ body[data-color-mode="dark"] {
     transition: background .3s;
 
     .progress-bar {
+      &.isMoved {
+        border-bottom-color: #333;
+      }
+
       span {
         background: v.$white;
       }
