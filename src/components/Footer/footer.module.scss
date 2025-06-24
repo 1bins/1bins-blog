@@ -24,3 +24,14 @@
     }
   }
 }
+
+// mobile
+@media screen and (max-width: 750px) {
+  .footer {
+    padding: 2.6rem 0 5rem;
+
+    .copyright {
+      margin-top: 1.4rem;
+    }
+  }
+}

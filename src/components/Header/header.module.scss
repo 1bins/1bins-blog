@@ -124,3 +124,24 @@ body[data-color-mode="dark"] {
     }
   }
 }
+
+// mobile
+
+
+@media screen and (max-width: 750px) {
+  .header {
+    .progress-bar {
+      display: none;
+    }
+  }
+
+  .container {
+    width: auto;
+    height: auto;
+    padding: 0.8rem 1.8rem;
+
+    ul {
+      gap: 0 0.5rem;
+    }
+  }
+}

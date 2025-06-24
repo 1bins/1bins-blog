@@ -3,6 +3,10 @@
 .container {
   width: 72rem;
   margin: 0 auto;
+
+  @media screen and (max-width: 750px) {
+    width: auto;
+  }
 }
 
 body[data-color-mode="dark"] {

@@ -40,3 +40,17 @@ body[data-color-mode="dark"] {
     }
   }
 }
+
+// mobile
+@media screen and (max-width: 750px) {
+  .post-category-box {
+    ul {
+      flex-wrap: wrap;
+      gap: 0.8rem;
+
+      li {
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}
