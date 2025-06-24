@@ -62,6 +62,11 @@ export const EditorForm = ({ postId }: Props) => {
 
   const handlePostDelete = async () => {
     if (!postId) return;
+
+    const confirmDelete = window.confirm('정말 이 글을 삭제하시겠습니까?');
+
+    if (!confirmDelete) return;
+
     const { error } = await supabase
       .from('posts')
       .delete()
