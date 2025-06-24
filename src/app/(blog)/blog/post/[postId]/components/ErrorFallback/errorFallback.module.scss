@@ -1,0 +1,21 @@
+@use '@/assets/scss/variable' as v;
+
+.container {
+  .align-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 6.2rem;
+    font-weight: 700;
+  }
+
+  .cont {
+    margin: 2rem 0 3.5rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+}

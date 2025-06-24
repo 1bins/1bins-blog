@@ -5,7 +5,7 @@ import {notFound} from "next/navigation";
 import {MdOutlineCalendarMonth} from "react-icons/md";
 import MarkdownPreviewClient from "@/app/(blog)/blog/post/[postId]/MarkdownPreviewClient";
 import {BackButton} from "@/app/(blog)/blog/post/[postId]/components/BackButton";
-import {SkeletonPost} from "@/components/Skeleton";
+import {ErrorFallback} from "@/app/(blog)/blog/post/[postId]/components/ErrorFallback";
 
 const cx = classnames.bind(style);
 
@@ -14,9 +14,7 @@ export const PostDetail = async ({ postId } : { postId: string }) => {
 
   if (error) {
     // 에러 처리
-    return(
-      <div>에러 처리중...</div>
-    );
+    return <ErrorFallback />;
   }
 
   if (!posts || posts.length === 0) {
