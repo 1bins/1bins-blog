@@ -35,12 +35,12 @@ export const PostTable = ({
         </tr>
         </thead>
         <tbody>
-        {posts.map(post => (
+        {posts.map((post, idx) => (
           <tr
             key={post.id}
             onClick={() => router.push(`/admin/post/${post.id}/edit`)}
           >
-            <td>{post.id}</td>
+            <td>{idx + 1}</td>
             <td>{post.title}</td>
             <td>{post.category}</td>
             <td>{new Date(`${post.created_at}`).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}</td>
