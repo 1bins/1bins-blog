@@ -134,7 +134,31 @@ img.--full {
   font-family: var(--font-pretendard), sans-serif !important;
 
   ul {
+    padding-left: 1.2em !important;
     list-style: initial;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    padding-bottom: 0 !important;
+    margin-top: 3.6rem !important;
+    border: none  !important;
+  }
+
+  blockquote {
+    padding: 0.6rem 1em !important;
+
+    &.orange {
+      border-left-color: #F2762E;
+      background: #fcf3ee;
+    }
+
+    span {
+      display: inline-block;
+      padding: 1.1rem 0.8rem;
+      margin-right: 0.5rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, .5);
+    }
   }
 }
 
@@ -143,6 +167,20 @@ body[data-color-mode="dark"] {
   color: #fff;
   background: v.$color_dark_background;
   transition: color .3s;
+
+  .wmde-markdown {
+    blockquote {
+
+      &.orange {
+        border-left-color: #F2762E;
+        background: #2c2c2c;
+      }
+
+      span {
+        background: rgba(255, 255, 255, .2);
+      }
+    }
+  }
 }
 
 // mobile
