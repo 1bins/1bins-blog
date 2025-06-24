@@ -1,0 +1,126 @@
+@use '@/assets/scss/variable' as v;
+
+.header {
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .16);
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    &.isMoved {
+      border-bottom: 1px solid #f8f8f8;
+    }
+
+    span {
+      display: block;
+      height: 0.4rem;
+      background: v.$black;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 120rem;
+  height: 5.8rem;
+  margin: 0 auto;
+
+  &.pageMoved {
+    transform: translateY(-100%);
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 0.8rem;
+  }
+
+  .nav-wrap {
+    li {
+      padding: 0.5rem 1.1rem;
+      border-radius: 2.8rem;
+
+      a {
+        color: #4c5f7a;
+        font-weight: 500;
+        transition: .5s;
+
+        &:hover {
+          color: v.$black;
+        }
+      }
+
+      &.active {
+        background: v.$color_background;
+
+        a {
+          color: v.$black;
+        }
+      }
+    }
+  }
+
+  .add-wrap {
+    button, a {
+      line-height: 1;
+
+      @include v.clickableBox;
+    }
+  }
+}
+
+// dark mode
+body[data-color-mode="dark"] {
+  .header {
+    box-shadow: 0 0 5px rgba(255, 255, 255, .16);
+    background: v.$color_dark_background;
+    transition: background .3s;
+
+    .progress-bar {
+      &.isMoved {
+        border-bottom-color: #333;
+      }
+
+      span {
+        background: v.$white;
+      }
+    }
+  }
+
+  .container {
+    .nav-wrap {
+      li {
+        a {
+          color: v.$white;
+
+          &:hover {
+            color: v.$blackF5;
+          }
+        }
+
+        &.active {
+          background: v.$color_background;
+
+          a {
+            color: v.$black;
+          }
+        }
+      }
+    }
+
+    .add-wrap {
+      button, a {
+        &:hover {
+          background: #333;
+        }
+      }
+    }
+  }
+}

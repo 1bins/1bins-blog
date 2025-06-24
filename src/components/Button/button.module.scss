@@ -1,0 +1,16 @@
+@use '@/assets/scss/variable' as v;
+
+.button {
+  width: 12rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  background: #c7d4de;
+  border-radius: 0.6rem;
+
+  &.circle {
+    width: auto;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+  }
+}
