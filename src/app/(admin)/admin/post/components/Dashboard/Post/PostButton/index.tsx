@@ -1,9 +1,9 @@
 'use client';
 
-import {Button} from "@/components/Button";
 import {useRouter} from 'next/navigation';
 import style from './PostButton.module.scss';
 import classnames from 'classnames/bind';
+import {Button} from "@/components/Button";
 
 const cx = classnames.bind(style);
 
