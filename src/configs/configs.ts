@@ -25,6 +25,5 @@ export const Categories = [
   'Typescript',
   'React',
   'Next',
-  'TIL',
   '회고록'
 ];
