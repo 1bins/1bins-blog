@@ -133,9 +133,13 @@ img.--full {
 .wmde-markdown {
   font-family: var(--font-pretendard), sans-serif !important;
 
-  ul {
+  ol, ul {
     padding-left: 1.2em !important;
     list-style: initial;
+  }
+
+  ol {
+    list-style: auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -154,10 +158,11 @@ img.--full {
 
     span {
       display: inline-block;
-      padding: 1.1rem 0.8rem;
+      padding: 1.1rem;
       margin-right: 0.5rem;
       border-radius: 1rem;
       background: rgba(255, 255, 255, .5);
+      line-height: 1;
     }
   }
 }
