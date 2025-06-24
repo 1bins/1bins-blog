@@ -19,7 +19,8 @@ export const HeaderNav = () => {
             <Link href="/blog">1BINS</Link>
           </li>
           <li className={cx({ active: pathname === "/about" })}>
-            <Link href="/about">About</Link>
+            {/*<Link href="/about">About</Link>*/}
+            <a href="https://1bins-portfolio.vercel.app/" target={"blank"} title={"새 탭으로 열기"}>About</a>
           </li>
         </ul>
       </nav>
