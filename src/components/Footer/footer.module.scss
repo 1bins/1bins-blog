@@ -1,0 +1,26 @@
+.footer {
+  padding: 4.6rem 0 8rem;
+
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 1.2rem;
+
+    li {
+      &:hover {
+        opacity: 0.7;
+        transition: opacity .3s;
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: 1.6rem;
+    text-align: center;
+
+    b {
+      font-weight: 700;
+    }
+  }
+}
