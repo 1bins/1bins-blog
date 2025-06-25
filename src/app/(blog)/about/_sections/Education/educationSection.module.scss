@@ -1,0 +1,34 @@
+.education-container {
+  position: relative;
+  padding: 2.7rem 2.9rem;
+  border: 0.1rem solid #e4e6e9;
+  border-radius: 1rem;
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .major {
+    margin: 0.6rem 0 0.8rem;
+    font-size: 1.6rem;
+  }
+
+  .grade {
+    font-size: 1.4rem;
+  }
+
+  .date {
+    position: absolute;
+    top: 2.7rem;
+    right: 2.9rem;
+    font-size: 1.3rem;
+
+    span {
+      margin-top: 0.2rem;
+      display: block;
+      color: #999;
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.tabs-box {
+  .tabs {
+    display: flex;
+    gap: 0 0.7rem;
+
+    li {
+      padding: 0.6rem 0.8rem;
+      border: 0.1rem solid #ddd;
+      cursor: pointer;
+      border-radius: 0.8rem;
+      
+      &.active {
+        color: #fff;
+        background: #161616;
+        border-color: transparent;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 6.66%;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  box-shadow: 0 0 .5rem .18rem #00000014;
+  border-radius: .6rem;
+  transition: all .3s;
+
+  img {
+    width: 60%;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+
+  .skill-name {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    padding: 0.5rem 1.1rem;
+    color: #fff;
+    background: #161616;
+    border-radius: 0.8rem;
+    opacity: 0;
+    transform: translateY(120%);
+    transition: all .5s;
+    z-index: 3;
+  }
+
+  &:hover {
+    .skill-name {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &.blur {
+    filter: blur(0.5rem);
+    transition: all .15s;
+
+    .skill-name {
+      display: none;
+    }
+  }
+}

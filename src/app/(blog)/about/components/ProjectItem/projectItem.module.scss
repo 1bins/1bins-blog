@@ -1,0 +1,41 @@
+.project-item {
+  position: relative;
+  padding: 2.6rem 1.8rem;
+  width: 49%;
+  min-height: 18.9rem;
+  border: 1px solid #e4e6e9;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  .company {
+    font-size: 1.2rem;
+    color: #999;
+  }
+
+  .title {
+    margin: 0.8rem 0 1.3rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .description{
+    line-height: 1.25;
+    word-break: keep-all;
+  }
+
+  .skill-list {
+    position: absolute;
+    width: 100%;
+    bottom: 2.6rem;
+    left: 1.8rem;
+
+    ul {
+      gap: 0 1rem;
+
+      li {
+        width: 8.5%;
+        box-shadow: 0 0 0.3rem 0.09rem rgba(0, 0, 0, 0.0784313725);
+      }
+    }
+  }
+}
