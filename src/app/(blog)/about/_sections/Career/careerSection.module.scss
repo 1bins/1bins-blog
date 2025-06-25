@@ -64,3 +64,42 @@
     }
   }
 }
+
+// mobile
+@media screen and (max-width: 750px) {
+  .career-item-box {
+    padding: 2rem;
+
+    &:nth-child(n+2) {
+      margin-top: 2rem;
+    }
+
+    .title-box {
+      .description {
+        line-height: 1.2;
+      }
+    }
+
+    .skill-box {
+      width: auto;
+
+      ul {
+        li {
+          width: 8%;
+        }
+      }
+    }
+
+    .career-cont-box {
+      margin-top: 2.2rem;
+
+      li {
+        line-height: 1.2;
+
+        &:before {
+          top: 0.6rem;
+        }
+      }
+    }
+  }
+}

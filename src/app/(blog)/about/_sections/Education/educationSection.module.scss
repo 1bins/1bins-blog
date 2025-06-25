@@ -32,3 +32,15 @@
     }
   }
 }
+
+// mobile
+@media screen and (max-width: 750px) {
+  .education-container {
+    padding: 2rem;
+
+    .date {
+      top: 2rem;
+      right: 2rem;
+    }
+  }
+}

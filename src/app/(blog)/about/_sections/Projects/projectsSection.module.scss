@@ -3,3 +3,11 @@
   gap: 1.8rem 2%;
   flex-wrap: wrap;
 }
+
+// mobile
+@media screen and (max-width: 750px) {
+  .project-list-box {
+    flex-direction: column;
+    gap: 1.5rem 0;
+  }
+}

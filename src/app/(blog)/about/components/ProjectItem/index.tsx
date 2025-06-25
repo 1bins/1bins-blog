@@ -12,8 +12,10 @@ export const ProjectItem = ({
   description,
   skills
 }: Project) => {
+  const handleItemStyle = id.includes('s') ? 'typeA' : id.includes('c') ? 'typeB' : 'typeC';
+
   return(
-    <div className={cx('project-item')}>
+    <div className={cx('project-item', handleItemStyle)}>
       <p className={cx('company')}>{company}</p>
       <p className={cx('title')}>{title}</p>
       <p className={cx('description')}>{description}</p>

@@ -1,3 +1,5 @@
+@use '@/assets/scss/variable' as v;
+
 .project-item {
   position: relative;
   padding: 2.6rem 1.8rem;
@@ -6,6 +8,26 @@
   border: 1px solid #e4e6e9;
   border-radius: 1rem;
   cursor: pointer;
+  
+  &:hover {
+    border-color: transparent;
+
+   .company, .title, .description {
+     color: #fff;
+   }
+  }
+
+  &.typeA:hover {
+    background: v.$color_secondary;
+  }
+
+  &.typeB:hover {
+    background: v.$color_primary;
+  }
+
+  &.typeC:hover {
+    background: v.$color_admin_primary;
+  }
 
   .company {
     font-size: 1.2rem;
@@ -36,6 +58,25 @@
         width: 8.5%;
         box-shadow: 0 0 0.3rem 0.09rem rgba(0, 0, 0, 0.0784313725);
       }
+    }
+  }
+}
+
+// mobile
+@media screen and (max-width: 750px) {
+  .project-item {
+    width: auto;
+    padding: 1.8rem 1.8rem 2.2rem;
+    min-height: auto;
+
+    .title {
+      margin: 0.8rem 0;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .skill-list {
+      display: none;
     }
   }
 }

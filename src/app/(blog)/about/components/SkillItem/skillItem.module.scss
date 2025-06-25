@@ -46,3 +46,15 @@
     }
   }
 }
+
+// mobile
+@media screen and (max-width: 750px) {
+  .skill-item {
+    width: 10%;
+    box-shadow: 0 0 .3rem .09rem #00000014;
+
+    img {
+      width: 80%;
+    }
+  }
+}
