@@ -58,3 +58,13 @@
     }
   }
 }
+
+// dark mode
+body[data-color-mode="dark"] {
+  .skill-item {
+    .skill-name {
+      color: #161616;
+      background: #fff;
+    }
+  }
+}
