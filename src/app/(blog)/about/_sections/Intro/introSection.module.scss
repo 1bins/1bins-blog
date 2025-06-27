@@ -29,3 +29,16 @@
     line-height: 1.5;
   }
 }
+
+// dark mode
+body[data-color-mode="dark"] {
+  .intro-box {
+    .contact-point {
+      li {
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

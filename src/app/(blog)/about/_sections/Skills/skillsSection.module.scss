@@ -27,3 +27,17 @@
     }
   }
 }
+
+// dark mode
+body[data-color-mode="dark"] {
+  .tabs-box {
+    .tabs {
+      li {
+        &.active {
+          color: #161616;
+          background: #fff;
+        }
+      }
+    }
+  }
+}

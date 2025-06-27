@@ -19,3 +19,12 @@
     width: auto;
   }
 }
+
+// dark mode
+body[data-color-mode="dark"] {
+  .container {
+    h3 {
+      color: #fff;
+    }
+  }
+}
