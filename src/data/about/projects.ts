@@ -11,8 +11,9 @@ export interface Project {
 export interface ProjectDetail extends Project {
   date: string;
   homepage?: string;
-  tasks: string[];
+  tasks?: string[];
   results?: string[];
+  data: string;
 }
 
 export const projects: Project[] = [
@@ -133,7 +134,7 @@ export const projectDetails: ProjectDetail[] = [
   {
     ...projects.find(p => p.id === "s1")!,
     date: "2024.10 ~ 2025.01",
-    homepage: "https://www.스푼(주).co.kr/",
+    homepage: "https://spoond.co.kr/",
     tasks: [
       "Vue transition을 활용하여 패럴랙스 애니메이션 구현, 사용자 경험 강화",
       "웹 접근성을 고려하여 사이트 전반적인 접근성 향상 작업",
@@ -143,6 +144,7 @@ export const projectDetails: ProjectDetail[] = [
       "검색 엔진 노출 향상 및 접근성 등급 개선",
       "사용자 이탈률 감소 및 페이지 체류 시간 증가",
     ],
+    data: "#### 주요기능\n- 웹 접근성 표준 준수를 위한 시맨틱 태그 마크업 및 스타일링\n- 페이지별 SEO 최적화\n    -  메타 태그, Open Graph 태그 설정\n    - 다국어 SEO를 위한 i18n 연동\n```js\nhead() {\n    return {\n        title: this.$t('seo.about_us.title').toString(),\n        meta: [\n            { hid: 'og:title', name: 'og:title', property: 'og:title', content: this.$t('seo.about_us.title').toString() },\n            { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.$t('seo.about_us.description').toString() },\n            { hid: 'description', name: 'description', content: this.$t('seo.about_us.description').toString() },\n            { hid: 'keywords', name: 'keywords', content: this.$t('seo.about_us.keywords').toString() }\n        ]\n    }\n},\n``` \n- Nuxt환경에서 Vue transition을 활용하여 패럴랙스 애니메이션 구현\n\n#### 결과\n- 검색 엔진 유입률 향상 및 사이트 노출 개선\n- 시각적 모션 효과로 몰입도와 체류 시간 증가"
   },
   {
     ...projects.find(p => p.id === "s2")!,
@@ -159,7 +161,9 @@ export const projectDetails: ProjectDetail[] = [
       "이벤트 집중 시간대 이탈률 감소 및 유저 재방문율 상승",
       "유튜브 시청과 이벤트 응모 연동으로 유저 참여도 및 이벤트 효과 증대",
     ],
-  },
+    data: "#### 주요기능\n- HTTP 메소드 기반 API 통신\n- 터치 이벤트와 GSAP 라이브러리를 결합하여 부드러운 모션의 게임 인터랙션 구현\n```js\n// spreadEffect\nconst spreadEffect = (touchEffectElem) => {\n    const tween = gsap.fromTo(touchEffectElem, {\n        opacity: 1,\n        scale: .2,\n    }, {\n        opacity: 0,\n        scale: 3,\n        duration: .5,\n        onComplete: () => {\n            touchEffectElem.remove();\n        }\n    })\n    return tween;\n}\n```\n- 유튜브 시청과 연계하여 이벤트 응모권 제공 → 자연스러운 반복 참여 유도\n```js\n$('.btn-youtube').on('click', function () {\n    createPlayer(videoId);\n});\n\nconst createPlayer = (videoId) => {\n    if (player) {\n        player.destroy();\n    }\n    player = new YT.Player('player', {\n        height: '360',\n        width: '640',\n        videoId: videoId,\n        playerVars: {\n            'controls': 0\n        },\n        events: {\n            'onStateChange': onPlayerStateChange\n        }\n    });\n}\n\nconst onPlayerStateChange = (event) => {\n    if (event.data == YT.PlayerState.ENDED) {\n        playerEnd();\n    }\n}\n\nconst playerEnd = () => {\n    availableNumb--;\n    videoId = 'o9KsRr1oEpo';\n    document.querySelector('#availableNumb').innerText = availableNumb;\n    document.querySelector('.modal-youtube-box').style.display = 'none';\n    document.querySelector('.modal-timeAttack-box').style.display = 'block';\n\n    if (availableNumb > 0) {\n        createPlayer(videoId);\n    } else {\n        document.querySelector('.modal-timeAttack-box .result-box').style.display = 'none';\n        document.querySelector('.modal-timeAttack-box .over-box').style.display = 'block';\n    }\n}\n\n$('.modal-youtube-box .btn-close').on('click', function () {\n    if (player) {\n        player.stopVideo();\n        player.destroy();\n    }\n    $('#modal').show();\n    $('.modal-youtube-box').hide();\n    $('.modal-timeAttack-box').show();\n});\n```\n- 이벤트 참여자 정보 저장 및 즉석 당첨 결과 제공\n- 트래픽 집중 시간대 서버 성능 저하에 대비하여 로딩 화면을 도입\n\n#### 결과\n- 대한민국 디지털 광고대상 마케팅/캠페인-프로모션 부문 은상 수상\n- 이벤트 집중 시간대 이탈률 감소 및 유저 재방문율 상승\n- 유튜브 시청과 이벤트 응모 연동으로 유저 참여도 및 이벤트 효과 증대"
+
+},
   {
     ...projects.find(p => p.id === "s3")!,
     date: "2024.04 ~ 2024.05",
@@ -175,6 +179,7 @@ export const projectDetails: ProjectDetail[] = [
       "유저 참여자 간 소셜 확산 및 공유 활성화",
       "직관적인 인터랙션과 자연스러운 흐름 구성으로 클라이언트로부터 긍정적인 피드백 수령",
     ],
+    data: "#### 주요기능\n- MBTI 형식의 음료 궁합 테스트 기능 구현\n- Redux기반 스토어 디자인\n- HTTP 메소드 기반 API 통신\n- SNS 공유 기능 구현\n- CSS Module 도입으로 컴포넌트 단위 스타일링 적용\n\n#### 결과\n- 유저 참여자 간 소셜 확산 및 공유 활성화\n- 직관적인 인터랙션과 자연스러운 흐름 구성으로 클라이언트로부터 긍정적인 피드백 수령"
   },
   {
     ...projects.find(p => p.id === "t1")!,
@@ -190,13 +195,13 @@ export const projectDetails: ProjectDetail[] = [
       "프론트엔드 전반의 흐름(라우팅, 상태 관리, API 통신, 컴포넌트 설계)을 스스로 구현하며 실전 감각 향상",
       "Zustand와 Supabase를 통해 상태/데이터 흐름에 대한 명확한 이해 및 처리 경험 확보",
       "직접 제작한 UI 컴포넌트를 통해 사용자 경험과 인터페이스 품질 향상"
-    ]
-
+    ],
+    data: "#### 주요기능\n- Supabase 인증 기능을 활용한 로그인 및 사용자 세션 관리 구현\n- Zustand를 도입하여 게시글 목록, 즐겨찾기 상태 등의 전역 상태 관리 구조 설계\n- 반응형 UI 및 사용자 경험을 고려하여 Skeleton 커스텀 컴포넌트 직접 제작\n- TypeScript 기반으로 프로젝트 전체 타입 설계\n\n#### 결과\n- 프론트엔드 전반의 흐름(라우팅, 상태 관리, API 통신, 컴포넌트 설계)을 스스로 구현하며 실전 감각 향상\n- Zustand와 Supabase를 통해 상태/데이터 흐름에 대한 명확한 이해 및 처리 경험 확보\n- 직접 제작한 UI 컴포넌트를 통해 사용자 경험과 인터페이스 품질 향상"
   },
   {
     ...projects.find(p => p.id === "t2")!,
     date: "2024.05",
-    homepage: "https://토이프로젝트-travel-w6r4.vercel.app",
+    homepage: "https://toy-travel-w6r4.vercel.app/",
     tasks: [
       "Tour API를 활용한 여행지 즐겨찾기 기능 제작",
       "Toast 컴포넌트를 직접 제작하여 사용자 행동에 대한 피드백 제공",
@@ -207,6 +212,7 @@ export const projectDetails: ProjectDetail[] = [
       "컴포넌트 단위의 기능 구현과 API 연동 경험을 통해 TypeScript의 실무 활용 역량 향상",
       "직접 제작한 UI 컴포넌트를 통해 사용자 경험 개선 및 상태 전달 명확화",
     ],
+    data: "#### 주요기능\n- Tour API를 활용한 여행지 즐겨찾기 기능 제작\n- Toast 컴포넌트를 직접 제작하여 사용자 행동에 대한 피드백 제공\n- Skeleton 컴포넌트를 직접 제작하여 사용자 편의성 제공\n- TypeScript를 도입하여 전반적인 프로젝트 개발 및 타입 안정성 확보\n\n#### 결과\n- 컴포넌트 단위의 기능 구현과 API 연동 경험을 통해 TypeScript의 실무 활용 역량 향상\n- 직접 제작한 UI 컴포넌트를 통해 사용자 경험 개선 및 상태 전달 명확화"
   },
   // 컨설트인사이드
   {
@@ -218,6 +224,7 @@ export const projectDetails: ProjectDetail[] = [
       "GSAP 라이브러리를 이용한 패럴랙스 스크롤 애니메이션 구현",
       "SweetAlert 라이브러리를 활용하여 클라이언트 UI 개선, 사용자에게 알림 및 피드백 제공",
     ],
+    data: "#### 주요기능\n - 봉안당 예약 시스템 관련 웹페이지 퍼블리싱\n - GSAP 라이브러리를 이용한 패럴랙스 스크롤 애니메이션 구현\n - SweetAlert 라이브러리를 활용하여 클라이언트 UI 개선, 사용자에게 알림 및 피드백 제공"
   },
   {
     ...projects.find(p => p.id === "c2")!,
@@ -228,6 +235,7 @@ export const projectDetails: ProjectDetail[] = [
       "웹 접근성 기준을 준수하여 장애를 가진 사용자도 편리하게 이용할 수 있도록 설계",
       "병원 특성에 맞춰 의료 정보 제공과 병원 서비스 소개 페이지를 직관적으로 구성",
     ],
+    data: "#### 주요기능\n - 404 페이지: SVG를 사용하여 동적 모션 구현, 사용자 친화적이고 재미있는 오류 페이지 제공\n - 웹 접근성 기준을 준수하여 장애를 가진 사용자도 편리하게 이용할 수 있도록 설계\n - 병원 특성에 맞춰 의료 정보 제공과 병원 서비스 소개 페이지를 직관적으로 구성"
   },
   {
     ...projects.find(p => p.id === "c3")!,
@@ -237,6 +245,7 @@ export const projectDetails: ProjectDetail[] = [
       "웹 접근성 준수: WCAG(Web Content Accessibility Guidelines) 기준에 맞춘 웹 접근성 확보",
       "공공기관 표준 준수: 공공기관에서 요구하는 웹 표준과 보안 기준을 준수하여 안정적인 웹사이트 제공",
     ],
+    data: "#### 주요기능\n - 용인시 온라인 일자리박람회 홈페이지 퍼블리싱 담당\n - 웹 접근성 준수: WCAG(Web Content Accessibility Guidelines) 기준에 맞춘 웹 접근성 확보\n - 공공기관 표준 준수: 공공기관에서 요구하는 웹 표준과 보안 기준을 준수하여 안정적인 웹사이트 제공"
   },
   {
     ...projects.find(p => p.id === "c4")!,
@@ -246,5 +255,6 @@ export const projectDetails: ProjectDetail[] = [
       "고도몰 제공 소스를 활용하여 다양한 레이아웃 구현 (팝업, 이벤트상품)",
       "이벤트 페이지 및 상품 페이지의 기능을 최적화하여 원활한 사용자 경험 제공",
     ],
+    data: "#### 주요기능\n - 고도몰 쇼핑몰 서비스 기반으로 크레욜라 쇼핑몰 홈페이지 구축\n - 고도몰 제공 소스를 활용하여 다양한 레이아웃 구현 (팝업, 이벤트상품)\n - 이벤트 페이지 및 상품 페이지의 기능을 최적화하여 원활한 사용자 경험 제공"
   },
 ]

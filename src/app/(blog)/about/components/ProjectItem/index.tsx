@@ -8,7 +8,7 @@ import {SkillList} from "@/app/(blog)/about/components/SkillList";
 const cx = classnames.bind(style);
 
 interface Props extends Project{
-  modalOpen: () => void;
+  onItemClick: (id: string) => void;
 }
 
 export const ProjectItem = ({
@@ -17,14 +17,14 @@ export const ProjectItem = ({
   title,
   description,
   skills,
-  modalOpen
+  onItemClick
 }: Props) => {
   const handleItemStyle = id.includes('s') ? 'typeA' : id.includes('c') ? 'typeB' : 'typeC';
 
   return(
     <div
       className={cx('project-item', handleItemStyle)}
-      onClick={modalOpen}
+      onClick={() => onItemClick(id)}
     >
       <p className={cx('company')}>{company}</p>
       <p className={cx('title')}>{title}</p>
