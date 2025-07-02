@@ -32,3 +32,12 @@
     }
   }
 }
+
+// dark mode
+body[data-color-mode="dark"] {
+  .modal-container {
+    .modal-box {
+      background: #121212;
+    }
+  }
+}
