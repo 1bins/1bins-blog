@@ -16,7 +16,6 @@ export const Skeleton = () => {
   )
 }
 
-
 export const SkeletonList = ({ count }: { count: number }) => {
   return(
     <div className={cx('skeleton-list')}>
@@ -33,6 +32,15 @@ export const SkeletonPost = () => {
       <div className={cx('title')}></div>
       <div className={cx('category')}></div>
       <div className={cx('date')}></div>
+      <div className={cx('content-box')}>
+        <div className={cx('content')}></div>
+      </div>
+    </div>
+  )
+}
+export const SkeletonMdFile = () => {
+  return(
+    <div className={cx('skeleton', 'post')}>
       <div className={cx('content-box')}>
         <div className={cx('content')}></div>
       </div>

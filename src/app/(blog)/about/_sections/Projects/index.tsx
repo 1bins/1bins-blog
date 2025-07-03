@@ -10,15 +10,20 @@ import {Modal} from "@/components/Modal";
 import MarkdownPreviewClient from "@/app/(blog)/blog/post/[postId]/MarkdownPreviewClient";
 import {SkillList} from "@/app/(blog)/about/components/SkillList";
 import { RiShareBoxLine } from "react-icons/ri";
+import {SkeletonMdFile} from "@/components/Skeleton";
 
 const cx = classnames.bind(style);
 
 export const ProjectSection = () => {
+  // state
   const { isOpen, modalOpen, modalClose } = useModal();
   const [modalData, setModalData] = useState<ProjectDetail>();
   const [mdSource, setMdSource] = useState<string | null>(null);
+  const [mdLoading, setMdLoading] = useState(true);
 
+  // variables
   const handleItemClick = (id: string) => {
+    setMdLoading(true);
     const selected = projectDetails.find(project => project.id === id);
     modalOpen();
     setModalData(selected);
@@ -29,6 +34,7 @@ export const ProjectSection = () => {
       fetch(`/api/md/${modalData.data}`)
         .then(res => res.json())
         .then(data => {
+          setMdLoading(false);
           setMdSource(data.data);
         })
         .catch(() => {
@@ -76,9 +82,13 @@ export const ProjectSection = () => {
                       </a>
                   }
                 </div>
-                <div className={cx('content-box')}>
-                  <MarkdownPreviewClient source={mdSource}/>
-                </div>
+                {mdLoading ?
+                  <SkeletonMdFile/>
+                  :
+                  <div className={cx('content-box')}>
+                    <MarkdownPreviewClient source={mdSource}/>
+                  </div>
+                }
               </div>
             );
           })()
