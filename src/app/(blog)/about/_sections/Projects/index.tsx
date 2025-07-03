@@ -2,7 +2,7 @@
 
 import style from './projectsSection.module.scss';
 import classnames from 'classnames/bind';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {ProjectDetail, projectDetails, projects} from "@/data/about/projects";
 import {ProjectItem} from "@/app/(blog)/about/components/ProjectItem";
 import {useModal} from "@/hooks/useModal";
@@ -14,15 +14,28 @@ import { RiShareBoxLine } from "react-icons/ri";
 const cx = classnames.bind(style);
 
 export const ProjectSection = () => {
-  // ** states
   const { isOpen, modalOpen, modalClose } = useModal();
   const [modalData, setModalData] = useState<ProjectDetail>();
+  const [mdSource, setMdSource] = useState<string | null>(null);
 
-  // ** variables
   const handleItemClick = (id: string) => {
+    const selected = projectDetails.find(project => project.id === id);
     modalOpen();
-    setModalData(projectDetails.find(project => project.id === id));
+    setModalData(selected);
   }
+
+  useEffect(() => {
+    if (modalData?.id) {
+      fetch(`/api/md/${modalData.data}`)
+        .then(res => res.json())
+        .then(data => {
+          setMdSource(data.data);
+        })
+        .catch(() => {
+          setMdSource('마크다운 파일을 찾을 수 없습니다.');
+        });
+    }
+  }, [modalData]);
 
   return(
     <section className={cx('section', 'section-projects')}>
@@ -43,7 +56,7 @@ export const ProjectSection = () => {
       <Modal isOpen={isOpen} onClose={modalClose}>
         {
           modalData && (() => {
-            const { company, date, title, description, skills, homepage, data } = modalData;
+            const { company, date, title, description, skills, homepage } = modalData;
 
             return(
               <div className={cx('modal-box')}>
@@ -64,7 +77,7 @@ export const ProjectSection = () => {
                   }
                 </div>
                 <div className={cx('content-box')}>
-                  <MarkdownPreviewClient source={data}/>
+                  <MarkdownPreviewClient source={mdSource}/>
                 </div>
               </div>
             );
