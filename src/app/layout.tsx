@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import "./globals.scss";
 import { blogName, blogDesc, blogThumbnailURL } from "@/configs/const";
+import BodyWrapper from "@/app/BodyWrapper";
 
 const pretendard = localFont({
   src: '../fonts/PretendardVariable.woff2',
@@ -27,9 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={pretendard.variable} data-color-mode="light">
+      <BodyWrapper fontClass={pretendard.variable}>
         {children}
-      </body>
+      </BodyWrapper>
     </html>
   );
 }

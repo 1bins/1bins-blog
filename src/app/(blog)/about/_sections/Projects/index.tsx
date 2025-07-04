@@ -5,18 +5,18 @@ import classnames from 'classnames/bind';
 import {useState, useEffect} from "react";
 import {ProjectDetail, projectDetails, projects} from "@/data/about/projects";
 import {ProjectItem} from "@/app/(blog)/about/components/ProjectItem";
-import {useModal} from "@/hooks/useModal";
 import {Modal} from "@/components/Modal";
 import MarkdownPreviewClient from "@/app/(blog)/blog/post/[postId]/MarkdownPreviewClient";
 import {SkillList} from "@/app/(blog)/about/components/SkillList";
 import { RiShareBoxLine } from "react-icons/ri";
 import {SkeletonProjectContent} from "@/components/Skeleton";
+import {modalStore} from "@/store/modalStore";
 
 const cx = classnames.bind(style);
 
 export const ProjectSection = () => {
   // state
-  const { isOpen, modalOpen, modalClose } = useModal();
+  const { isOpen, modalOpen, modalClose } = modalStore()
   const [modalData, setModalData] = useState<ProjectDetail>();
   const [mdSource, setMdSource] = useState<string | null>(null);
   const [mdLoading, setMdLoading] = useState(true);

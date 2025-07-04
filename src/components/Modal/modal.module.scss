@@ -27,6 +27,11 @@
     background: #fff;
     border-radius: 0.8rem;
 
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
     @media screen and (max-width: 750px) {
       width: 94.66%;
     }

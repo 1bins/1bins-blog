@@ -11,6 +11,10 @@ body {
   font-size: 1.5rem;
   overflow-x: hidden;
   line-height: 1;
+
+  &.modal-open {
+    overflow: hidden;
+  }
 }
 
 * {
