@@ -10,7 +10,7 @@ import {Modal} from "@/components/Modal";
 import MarkdownPreviewClient from "@/app/(blog)/blog/post/[postId]/MarkdownPreviewClient";
 import {SkillList} from "@/app/(blog)/about/components/SkillList";
 import { RiShareBoxLine } from "react-icons/ri";
-import {SkeletonMdFile} from "@/components/Skeleton";
+import {SkeletonProjectContent} from "@/components/Skeleton";
 
 const cx = classnames.bind(style);
 
@@ -83,7 +83,7 @@ export const ProjectSection = () => {
                   }
                 </div>
                 {mdLoading ?
-                  <SkeletonMdFile/>
+                  <SkeletonProjectContent/>
                   :
                   <div className={cx('content-box')}>
                     <MarkdownPreviewClient source={mdSource}/>

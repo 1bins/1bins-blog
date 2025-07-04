@@ -81,7 +81,27 @@
     }
   }
 
+  &.project {
+    margin-top: 2rem;
 
+    .item {
+      background: none;
+
+      &:nth-child(n+2) {
+        margin-top: 2rem;
+      }
+
+      .title {
+        width: 18%;
+        height: 2.5rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .content {
+        height: 6.2rem;
+      }
+    }
+  }
 }
 
 // dark mode

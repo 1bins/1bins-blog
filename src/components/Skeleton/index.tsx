@@ -38,12 +38,21 @@ export const SkeletonPost = () => {
     </div>
   )
 }
-export const SkeletonMdFile = () => {
+
+export const SkeletonProjectContent = () => {
   return(
-    <div className={cx('skeleton', 'post')}>
-      <div className={cx('content-box')}>
-        <div className={cx('content')}></div>
-      </div>
+    <div className={cx('skeleton', 'project')}>
+      {
+        new Array(3).fill('').map((_, idx) => (
+          <div
+            className={cx('item')}
+            key={idx}
+          >
+            <div className={cx('title')}></div>
+            <div className={cx('content')}></div>
+          </div>
+        ))
+      }
     </div>
   )
 }
