@@ -1,13 +1,14 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(
-  req: Request,
-  { params }: { params: { slug: string } }
-) {
+export async function GET(req: NextRequest) {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'about', 'md', `${params.slug}.md`);
+    const pathname = req.nextUrl.pathname;
+    const segments = pathname.split('/');
+    const slug = segments[segments.length - 1];
+
+    const filePath = path.join(process.cwd(), 'public', 'about', 'md', `${slug}.md`);
     const file = await fs.readFile(filePath, 'utf8');
 
     return NextResponse.json({ data: file });
