@@ -73,4 +73,31 @@
     flex-direction: column;
     gap: 1.5rem 0;
   }
+
+  .modal-box {
+    .title-box {
+      .skill-list {
+        ul {
+          li {
+            width: 8.22%;
+          }
+        }
+      }
+
+      .homepage {
+        display: flex;
+        width: 16rem;
+        margin: 1.6rem auto 0;
+        line-height: 4.2rem;
+        color: #fff;
+        background: #161616;
+        border: 0.1rem solid transparent;
+        border-radius: 0.4rem;
+        align-items: center;
+        justify-content: center;
+        gap: 0 0.4rem;
+      }
+    }
+
+  }
 }
