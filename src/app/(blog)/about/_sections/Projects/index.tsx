@@ -29,6 +29,11 @@ export const ProjectSection = () => {
     setModalData(selected);
   }
 
+  const handleModalClose = () => {
+    modalClose();
+    setModalData(undefined);
+  }
+
   useEffect(() => {
     if (modalData?.id) {
       fetch(`/api/md/${modalData.data}`)
@@ -59,7 +64,7 @@ export const ProjectSection = () => {
           />
         ))}
       </div>
-      <Modal isOpen={isOpen} onClose={modalClose}>
+      <Modal isOpen={isOpen} onClose={handleModalClose}>
         {
           modalData && (() => {
             const { company, date, title, description, skills, homepage } = modalData;
