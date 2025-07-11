@@ -5,7 +5,7 @@ import classnames from 'classnames/bind';
 import {useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import {CategorySelector} from "@/app/(admin)/admin/post/components/Editor/CategorySelector";
-import {TitleInput} from "@/app/(admin)/admin/post/components/Editor/TitleInput";
+import {InputForm} from "../InputForm";
 import {EditorContent} from "@/app/(admin)/admin/post/components/Editor/EditorContent";
 import {EditorActions} from "@/app/(admin)/admin/post/components/Editor/EditorActions";
 import {supabase} from "@/lib/supabase";
@@ -22,6 +22,7 @@ export const EditorForm = ({ postId }: Props) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
+  const [thumbnailUrl, setThumbnailUrl] = useState('');
 
   // ** variables
   const router = useRouter();
@@ -29,7 +30,7 @@ export const EditorForm = ({ postId }: Props) => {
     if (postId) {
       const { error } = await supabase
         .from('posts')
-        .update({ title, content, category })
+        .update({ title, content, category, thumbnailUrl })
         .eq('id', Number(postId));
 
       if (error) {
@@ -47,6 +48,7 @@ export const EditorForm = ({ postId }: Props) => {
             title,
             content,
             category,
+            thumbnailUrl
           }
         ]);
 
@@ -99,6 +101,7 @@ export const EditorForm = ({ postId }: Props) => {
         setTitle(post.title ?? '');
         setContent(post.content ?? '');
         setCategory(post.category ?? '');
+        setThumbnailUrl(post.thumbnailUrl ?? '');
       }
     })();
   }, [postId, router])
@@ -109,9 +112,11 @@ export const EditorForm = ({ postId }: Props) => {
         category={category}
         onCategoryChange={setCategory}
       />
-      <TitleInput
-        title={title}
-        onTitleChange={setTitle}
+      <InputForm
+        formValue={title}
+        onFormValueChange={setTitle}
+        className={'title-box'}
+        placeholder={'제목을 입력해주세요'}
       />
       <EditorContent
         content={content}
@@ -121,6 +126,12 @@ export const EditorForm = ({ postId }: Props) => {
         postId={postId}
         onPostSave={handlePostSave}
         onPostDelete={handlePostDelete}
+      />
+      <InputForm
+        formValue={thumbnailUrl}
+        onFormValueChange={setThumbnailUrl}
+        className={'thumb-box'}
+        placeholder={'썸네일 이미지 경로 ex) /posts/날짜/파일명.png'}
       />
     </div>
   )
