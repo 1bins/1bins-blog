@@ -10,29 +10,35 @@ import {ErrorFallback} from "@/app/(blog)/blog/post/[postId]/components/ErrorFal
 const cx = classnames.bind(style);
 
 export const PostDetail = async ({ postId } : { postId: string }) => {
-  const { data: posts, error } = await supabase.from('posts').select('*').eq('id', Number(postId));
+  const { data: post, error } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('id', Number(postId))
+    .single();
+
+  console.log(post);
 
   if (error) {
     // 에러 처리
     return <ErrorFallback />;
   }
 
-  if (!posts || posts.length === 0) {
+  if (post === null) {
     notFound()
   }
 
   return(
     <>
       <div className={cx('post-header')}>
-        <h3 className={cx('title')}>{posts[0].title}</h3>
-        <p className={cx('category')}>{posts[0].category}</p>
+        <h3 className={cx('title')}>{post.title}</h3>
+        <p className={cx('category')}>{post.category}</p>
         <p className={cx('date')}>
           <MdOutlineCalendarMonth color="#999" />
-          <span>{new Date(`${posts[0].created_at}`).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}</span>
+          <span>{new Date(`${post.created_at}`).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}</span>
         </p>
       </div>
       <div className={cx('post-body')}>
-        <MarkdownPreviewClient source={posts[0].content}/>
+        <MarkdownPreviewClient source={post.content}/>
         <aside>
           <BackButton/>
         </aside>
