@@ -3,6 +3,7 @@
 import style from './modal.module.scss';
 import classnames from 'classnames/bind';
 import {ReactNode} from "react";
+import { IoCloseCircleSharp } from "react-icons/io5";
 
 const cx = classnames.bind(style);
 
@@ -29,7 +30,10 @@ export const Modal = ( {
         <button
           type="button"
           onClick={onClose}
-        ></button>
+          className={cx('btn-close')}
+        >
+          <IoCloseCircleSharp size={24}/>
+        </button>
         {children}
       </div>
     </div>

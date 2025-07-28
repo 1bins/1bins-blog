@@ -27,6 +27,12 @@
     background: #fff;
     border-radius: 0.8rem;
 
+    .btn-close {
+      position: absolute;
+      top: 1.6rem;
+      right: 1.6rem;
+    }
+
     img {
       display: block;
       margin: 0 auto;
