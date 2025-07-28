@@ -19,6 +19,17 @@ export interface ProjectDetail extends Project {
 export const projects: Project[] = [
   // 스푼
   {
+    id: "s0",
+    company: "스푼(주)",
+    title: "퍼포먼스 마케터 대시보드 구축",
+    description: "Next.js 기반 대시보드 구축",
+    skills: [
+      { name: "Next.js", img: "next.png" },
+      { name: "TypeScript", img: "typescript.png" },
+      { name: "SCSS", img: "scss.png" },
+    ]
+  },
+  {
     id: "s1",
     company: "스푼(주)",
     title: "자사 홈페이지 리뉴얼",
@@ -48,6 +59,18 @@ export const projects: Project[] = [
     skills: [
       { name: "React", img: "react.png" },
       { name: "Redux", img: "redux.png" },
+      { name: "JavaScript", img: "javascript.png" },
+      { name: "SCSS", img: "scss.png" },
+    ]
+  },
+  {
+    id: "s4",
+    company: "스푼(주)",
+    title: "추가 참여 프로젝트들",
+    description: "스푼(주)에서 프론트엔드 개발자로써 참여했던 프로젝트 리스트",
+    skills: [
+      { name: "React", img: "react.png" },
+      { name: "Nuxt", img: "nuxt.png" },
       { name: "JavaScript", img: "javascript.png" },
       { name: "SCSS", img: "scss.png" },
     ]
@@ -86,7 +109,7 @@ export const projects: Project[] = [
     id: "c1",
     company: "컨설트인사이드",
     title: "분당추모공원휴 봉안당 관리 시스템",
-    description: "GSAP를 이용한 패럴랙스 홈페이지 퍼블리싱",
+    description: "GSAP를 이용한 패럴랙스 홈페이지 디자인 및 퍼블리싱",
     skills: [
       { name: "html", img: "html.png" },
       { name: "JavaScript", img: "javascript.png" },
@@ -98,7 +121,7 @@ export const projects: Project[] = [
     id: "c2",
     company: "컨설트인사이드",
     title: "화홍병원 홈페이지",
-    description: "SVG를 사용하여 동적 모션 퍼블리싱",
+    description: "SVG를 사용하여 동적 모션 디자인 및 퍼블리싱",
     skills: [
       { name: "html", img: "html.png" },
       { name: "JavaScript", img: "javascript.png" },
@@ -109,7 +132,7 @@ export const projects: Project[] = [
     id: "c3",
     company: "컨설트인사이드",
     title: "용인시 온라인 일자리박람회 홈페이지",
-    description: "웹 접근성과 공공기관 표준을 준수하여 홈페이지 퍼블리싱",
+    description: "웹 접근성과 공공기관 표준을 준수하여 홈페이지 디자인 및 퍼블리싱",
     skills: [
       { name: "html", img: "html.png" },
       { name: "JavaScript", img: "javascript.png" },
@@ -120,7 +143,7 @@ export const projects: Project[] = [
     id: "c4",
     company: "컨설트인사이드",
     title: "크레욜라 쇼핑몰 홈페이지",
-    description: "CJ 데이비드토이 크레욜라 고도몰 기반 쇼핑몰 홈페이지 퍼블리싱",
+    description: "CJ 데이비드토이 크레욜라 고도몰 기반 쇼핑몰 홈페이지 디자인 및 퍼블리싱",
     skills: [
       { name: "html", img: "html.png" },
       { name: "JavaScript", img: "javascript.png" },
@@ -130,7 +153,7 @@ export const projects: Project[] = [
   {
     id: "c5",
     company: "컨설트인사이드",
-    title: "참여 프로젝트들",
+    title: "추가 참여 프로젝트들",
     description: "컨설트인사이드에서 웹 퍼블리셔로써 참여했던 프로젝트 리스트",
     skills: [
       { name: "html", img: "html.png" },
@@ -143,6 +166,11 @@ export const projects: Project[] = [
 export const projectDetails: ProjectDetail[] = [
   // 스푼
   {
+    ...projects.find(p => p.id === "s0")!,
+    date: "2025.07 ~ 진행중",
+    data: "spoon_dashboard"
+  },
+  {
     ...projects.find(p => p.id === "s1")!,
     date: "2024.10 ~ 2025.01",
     homepage: "https://spoond.co.kr/",
@@ -153,11 +181,16 @@ export const projectDetails: ProjectDetail[] = [
     date: "2024.06 ~ 2024.07",
     data: "spoon_chilsung"
 
-},
+  },
   {
     ...projects.find(p => p.id === "s3")!,
     date: "2024.04 ~ 2024.05",
     data: "spoon_milkis"
+  },
+  {
+    ...projects.find(p => p.id === "s4")!,
+    date: "2024.04 ~ 현재",
+    data: "spoon_projects"
   },
   {
     ...projects.find(p => p.id === "t1")!,
