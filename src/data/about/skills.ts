@@ -6,6 +6,16 @@ export interface Skill {
 
 export const skills: Skill[] = [
   {
+    type: "framework",
+    name: "React",
+    img: "react.png",
+  },
+  {
+    type: "framework",
+    name: "Next",
+    img: "next.png",
+  },
+  {
     type: "lang",
     name: "HTML",
     img: "html.png",
@@ -29,26 +39,6 @@ export const skills: Skill[] = [
     type: "lang",
     name: "SCSS",
     img: "scss.png",
-  },
-  {
-    type: "framework",
-    name: "React",
-    img: "react.png",
-  },
-  {
-    type: "framework",
-    name: "Vue",
-    img: "vue.png",
-  },
-  {
-    type: "framework",
-    name: "Next",
-    img: "next.png",
-  },
-  {
-    type: "framework",
-    name: "Nuxt",
-    img: "nuxt.png",
   },
   {
     type: "state",

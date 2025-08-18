@@ -4,7 +4,6 @@ import style from './skillsSection.module.scss';
 import classnames from 'classnames/bind';
 import {useState} from "react";
 import {skills} from "@/data/about/skills";
-import Image from "next/image";
 import {SkillList} from "../../components/SkillList";
 
 const cx = classnames.bind(style);
