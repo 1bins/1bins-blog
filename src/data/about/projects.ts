@@ -32,6 +32,16 @@ export const projects: Project[] = [
   {
     id: "s1",
     company: "스푼(주)",
+    title: "대홍기획 기프티엘 페이지 리뉴얼",
+    description: "기프티엘 MMS 신규템플릿 리뉴얼",
+    skills: [
+      { name: "JavaScript", img: "javascript.png" },
+      { name: "SCSS", img: "scss.png" },
+    ]
+  },
+  {
+    id: "s2",
+    company: "스푼(주)",
     title: "자사 홈페이지 리뉴얼",
     description: "Nuxt 기반 스푼 홈페이지 리뉴얼 및 유지보수 업무",
     skills: [
@@ -41,7 +51,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "s2",
+    id: "s3",
     company: "스푼(주)",
     title: "롯데음료 칠성사이다 더위원해",
     description: "유저들이 터치게임을 통해 이벤트에 참여하는 마이크로 사이트 제작",
@@ -52,7 +62,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "s3",
+    id: "s4",
     company: "스푼(주)",
     title: "롯데음료 밀키스 친밀리미터",
     description: "밀키스 성향 테스트와 친구와 궁합매칭, 즉석복권 기능이 담긴 마이크로 사이트 제작",
@@ -64,7 +74,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "s4",
+    id: "s5",
     company: "스푼(주)",
     title: "추가 참여 프로젝트들",
     description: "스푼(주)에서 프론트엔드 개발자로써 참여했던 프로젝트 리스트",
@@ -167,28 +177,35 @@ export const projectDetails: ProjectDetail[] = [
   // 스푼
   {
     ...projects.find(p => p.id === "s0")!,
-    date: "2025.07 ~ 진행중",
+    date: "2025.08 ~ 진행중",
+    homepage: "https://spoon-helper.vercel.app/dashboard",
     data: "spoon_dashboard"
   },
   {
     ...projects.find(p => p.id === "s1")!,
+    date: "2025.08 ~ 2025.09",
+    homepage: "https://www.giftielbiz.co.kr/main",
+    data: "spoon_giftiel"
+  },
+  {
+    ...projects.find(p => p.id === "s2")!,
     date: "2024.10 ~ 2025.01",
     homepage: "https://spoond.co.kr/",
     data: "spoon_homepage"
   },
   {
-    ...projects.find(p => p.id === "s2")!,
+    ...projects.find(p => p.id === "s3")!,
     date: "2024.06 ~ 2024.07",
     data: "spoon_chilsung"
 
   },
   {
-    ...projects.find(p => p.id === "s3")!,
+    ...projects.find(p => p.id === "s4")!,
     date: "2024.04 ~ 2024.05",
     data: "spoon_milkis"
   },
   {
-    ...projects.find(p => p.id === "s4")!,
+    ...projects.find(p => p.id === "s5")!,
     date: "2024.04 ~ 현재",
     data: "spoon_projects"
   },
