@@ -177,8 +177,8 @@ export const projectDetails: ProjectDetail[] = [
   // 스푼
   {
     ...projects.find(p => p.id === "s0")!,
-    date: "2025.08 ~ 진행중",
-    homepage: "https://spoon-helper.vercel.app/dashboard",
+    date: "2025.10 ~ 진행중",
+    homepage: "https://spoon-helper.vercel.app/dashboard/youtube",
     data: "spoon_dashboard"
   },
   {
